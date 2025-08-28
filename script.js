@@ -1,4 +1,4 @@
-// Header scroll effect
+// Header scroll effect (Note: this is not currently used in the new design, but is a good practice to keep)
 window.addEventListener('scroll', function() {
     const header = document.querySelector('header');
     if (window.scrollY > 50) {
