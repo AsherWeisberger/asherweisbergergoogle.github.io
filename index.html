@@ -3,368 +3,310 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesla Model Y Juniper Launch</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>The Juniper Society - Win a Model Y Juniper Launch Edition</title>
     <style>
-        /* Base Styling */
-        :root {
-            --color-dark-bg: #0d0d0d;
-            --color-light-text: #f5f5f5;
-            --color-primary-cta: #e82127;
-            --color-subtle-text: #a1a1a1;
-            --font-heading: 'Playfair Display', serif;
-            --font-body: 'Roboto', sans-serif;
-            --max-content-width: 1200px;
-        }
-
-        * {
+        body {
+            font-family: sans-serif;
+            color: #333;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-body);
-            background-color: var(--color-dark-bg);
-            color: var(--color-light-text);
             line-height: 1.6;
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
+            background-color: #f9f9f9;
         }
-
-        a {
-            text-decoration: none;
-            color: var(--color-light-text);
-            transition: color 0.3s ease;
+        header {
+            text-align: center;
+            background-color: #000;
+            color: #fff;
+            padding: 20px;
         }
-
         h1, h2, h3 {
-            font-family: var(--font-heading);
-            font-weight: 400;
+            margin: 10px 0;
         }
-
-        .section {
-            padding: 120px 20px;
-            max-width: var(--max-content-width);
+        a {
+            color: #fff;
+            background-color: #ff0000;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #cc0000;
+        }
+        section {
+            padding: 20px;
+            max-width: 1200px;
             margin: 0 auto;
-            position: relative;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product {
+            text-align: center;
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        .car-details {
             text-align: center;
         }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--color-primary-cta);
-            color: var(--color-light-text);
-            padding: 18px 45px;
-            border-radius: 50px;
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 8px 25px rgba(232, 33, 39, 0.4);
+        .car-mods img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
         }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(232, 33, 39, 0.6);
-        }
-
-        /* --- Hero Section --- */
-        .hero-section {
-            height: 100vh;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            min-width: 100%;
-            min-height: 100%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 20px;
-            max-width: 800px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
-        }
-        
-        .hero-content.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 6rem);
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-
-        .hero-content p {
-            font-size: clamp(1rem, 2vw, 1.5rem);
-            color: var(--color-subtle-text);
-            margin-bottom: 50px;
-        }
-
-        /* --- Storytelling Sections (Full-screen) --- */
-        .story-section {
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh; /* Changed to full viewport height for a more cinematic feel */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax effect for the background image */
-            text-align: center;
-        }
-
-        .story-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 0;
-        }
-
-        .story-content-overlay {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            padding: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        
-        .story-content-overlay.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .story-content-overlay h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: 20px;
-        }
-        
-        .story-content-overlay p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--color-subtle-text);
+        ul.mod-list {
+            list-style-type: disc;
+            text-align: left;
             max-width: 600px;
-            margin: 0 auto 30px;
+            margin: 0 auto;
         }
-
-        /* --- How It Works Section --- */
-        .steps-section {
-            background-color: #1a1a1a;
+        .entry-steps {
+            text-align: center;
         }
-
-        .steps-section h2 {
-            margin-bottom: 20px;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+        .entry-steps img {
+            width: 100px;
+            margin: 10px;
         }
-        .steps-section p {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--color-subtle-text);
-            max-width: 800px;
-            margin: 0 auto 60px;
+        .prizes ul {
+            list-style-type: none;
+            padding: 0;
         }
-
-        .steps-container {
+        .review-stats {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 50px;
+            justify-content: space-around;
         }
-
-        .step-item {
-            max-width: 300px;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        
-        .step-item.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .step-number {
-            font-size: 5rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.1);
-        }
-
-        .step-item h3 {
-            font-size: 1.5rem;
-            margin-top: 10px;
-            margin-bottom: 10px;
-            color: var(--color-light-text);
-        }
-
-        .step-item p {
-            color: var(--color-subtle-text);
-        }
-        
-        /* --- Final CTA --- */
-        .final-cta {
-            padding-top: 80px;
-        }
-
-        /* --- Footer --- */
-        .footer {
-            padding: 50px 20px;
-            text-align: center;
-            background-color: var(--color-dark-bg);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer p, .footer a {
-            font-size: 0.85rem;
-            color: var(--color-subtle-text);
-            margin: 5px 0;
-        }
-
-        .footer a:hover {
-            color: var(--color-light-text);
-        }
-
-        @media (max-width: 768px) {
-            .story-section {
-                height: 75vh;
-            }
+        .review {
+            background-color: #fff;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
     </style>
 </head>
 <body>
-
-    <header class="hero-section">
-        <video class="hero-video" autoplay loop muted playsinline>
-            <source src="https://assets.tesla.com/videos/model-y-juniper-hero.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>The Future is Here.</h1>
-            <p>Own the New Tesla Model Y Juniper Launch Edition.</p>
-            <a href="#enter-draw" class="cta-button">Enter the Draw Now</a>
-        </div>
+    <header>
+        <h1>WIN THIS</h1>
+        <h2>Model Y Juniper Launch Edition + $25K CASH!</h2>
+        <h3>50X ENTRIES ENDING SOON!</h3>
+        <a href="#enter">ENTER NOW ></a>
     </header>
 
-    <section class="story-section" style="background-image: url('https://images.unsplash.com/photo-1629704771465-950c44152e93?q=80&w=2670&auto=format&fit=crop');">
-        <div class="story-content-overlay">
-            <h2>Unprecedented Performance</h2>
-            <p>Experience the thrill of instantaneous torque, achieving 0 to 60 mph in a mere 4.6 seconds. The road ahead has never been this exhilarating.</p>
-            <a href="#enter-draw" class="cta-button">Learn More</a>
-        </div>
-    </section>
-
-    <section class="story-section" style="background-image: url('https://images.unsplash.com/photo-1621251347640-f10f274a72d7?q=80&w=2670&auto=format&fit=crop');">
-        <div class="story-content-overlay">
-            <h2>A Sanctuary of Simplicity</h2>
-            <p>Step into a meticulously crafted interior that prioritizes clean lines and intuitive design. Every detail is considered for a driving experience unlike any other.</p>
-            <a href="#enter-draw" class="cta-button">Explore Interior</a>
-        </div>
-    </section>
-
-    <section class="story-section" style="background-image: url('https://images.unsplash.com/photo-1623916298270-f4b6a5051b66?q=80&w=2670&auto=format&fit=crop');">
-        <div class="story-content-overlay">
-            <h2>Seamless Technology</h2>
-            <p>Your vehicle comes fully equipped with the most advanced driver assistance system, offering a new level of convenience and confidence on the road.</p>
-            <a href="#enter-draw" class="cta-button">See Features</a>
-        </div>
-    </section>
-
-    <section class="section steps-section">
-        <h2>How It Works</h2>
-        <p>Your path to winning is clear and transparent. Follow these three simple steps for your chance to win the grand prize.</p>
-        <div class="steps-container">
-            <div class="step-item">
-                <span class="step-number">01</span>
-                <h3>Secure Your Entries</h3>
-                <p>Each entry gives you a chance to win. Purchase entries through our secure portal.</p>
+    <section class="new-arrivals">
+        <h2>NEW ARRIVALS</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Model+Y+Chrome+Tee" alt="Model Y Chrome Tee">
+                <h3>Model Y Chrome Tee</h3>
+                <p>$49.00</p>
+                <p>️ 2,450 50x</p>
             </div>
-            <div class="step-item">
-                <span class="step-number">02</span>
-                <h3>The Live Draw</h3>
-                <p>The winner is selected at random and announced live for complete transparency.</p>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Model+Y+Pages+Tee" alt="Model Y Pages Tee">
+                <h3>Model Y Pages Tee</h3>
+                <p>$49.00</p>
+                <p>️ 2,450 50x</p>
             </div>
-            <div class="step-item">
-                <span class="step-number">03</span>
-                <h3>Win the Prize</h3>
-                <p>We handle all the logistics, so you can enjoy your new car. Taxes and delivery are covered.</p>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Juniper+Motion+Blur+Hoodie" alt="Juniper Motion Blur Hoodie">
+                <h3>Juniper Motion Blur Hoodie</h3>
+                <p>$69.00</p>
+                <p>️ 3,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Model+Y+Tee" alt="Model Y Tee">
+                <h3>Model Y Tee</h3>
+                <p>$49.00</p>
+                <p>️ 2,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Choose+Your+Ride+Hoodie" alt="Choose Your Ride Hoodie">
+                <h3>Choose Your Ride Hoodie</h3>
+                <p>$69.00</p>
+                <p>️ 3,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Juniper+Ripple+Hoodie" alt="Juniper Ripple Hoodie">
+                <h3>Juniper Ripple Hoodie</h3>
+                <p>$69.00</p>
+                <p>️ 3,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Model+Y+Tunnel+Tee" alt="Model Y Tunnel Tee">
+                <h3>Model Y Tunnel Tee</h3>
+                <p>$49.00</p>
+                <p>️ 2,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Juniper+Tee" alt="Juniper Tee">
+                <h3>Juniper Tee</h3>
+                <p>$49.00</p>
+                <p>️ 2,450 50x</p>
             </div>
         </div>
     </section>
 
-    <section id="enter-draw" class="section final-cta">
-        <h2>Your Place Awaits.</h2>
-        <p style="color: var(--color-subtle-text); max-width: 600px; margin: 0 auto 50px;">This is your moment to own the future. Don't miss your chance.</p>
-        <a href="#" class="cta-button">Enter the Draw Now</a>
+    <section class="car-details">
+        <h2>With $30K of Mods + $25K Cash!</h2>
+        <div class="car-mods">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+1" alt="Model Y Mod 1">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+2" alt="Model Y Mod 2">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+3" alt="Model Y Mod 3">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+4" alt="Model Y Mod 4">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+5" alt="Model Y Mod 5">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+6" alt="Model Y Mod 6">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+7" alt="Model Y Mod 7">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+8" alt="Model Y Mod 8">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+9" alt="Model Y Mod 9">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+10" alt="Model Y Mod 10">
+            <img src="https://via.placeholder.com/200?text=Model+Y+Mod+11" alt="Model Y Mod 11">
+        </div>
+        <h3>Performance Upgrades</h3>
+        <ul class="mod-list">
+            <li>Dual Motor All-Wheel Drive</li>
+            <li>Performance Boost Tune</li>
+            <li>Lowering Suspension Kit</li>
+        </ul>
+        <h3>Exterior Mods</h3>
+        <ul class="mod-list">
+            <li>Carbon Fiber Front Hood</li>
+            <li>Carbon Fiber Mirrors</li>
+            <li>Carbon Fiber Spoiler</li>
+            <li>Carbon Fiber Side Skirts</li>
+            <li>Carbon Fiber Rear Diffuser</li>
+            <li>Carbon Fiber Front Splitter</li>
+            <li>Carbon Fiber Front Bumper</li>
+            <li>Carbon Fiber Rear Bumper</li>
+            <li>Carbon Fiber Vented Fenders</li>
+            <li>Custom Matte Black Vinyl Wrap</li>
+            <li>20" Forged Wheels with Performance Tires</li>
+        </ul>
+        <h3>Interior Mods</h3>
+        <ul class="mod-list">
+            <li>Carbon Fiber Steering Wheel</li>
+            <li>Carbon Fiber Trim</li>
+            <li>Starlight Headliner</li>
+            <li>Premium Leather with Red Stitching</li>
+        </ul>
     </section>
 
-    <footer class="footer">
-        <p>&copy; 2025 Tesla Model Y Launch. All rights reserved.</p>
-        <p>This promotion is not sponsored, endorsed, or administered by, or associated with, Tesla, Inc.</p>
-    </footer>
+    <section class="top-sellers">
+        <h2>TOP SELLERS</h2>
+        <div class="product-grid">
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Juniper+Hoodie" alt="Juniper Hoodie">
+                <h3>Juniper Hoodie</h3>
+                <p>$69.00</p>
+                <p>️ 3,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Model+Y+Tunnel+Hoodie" alt="Model Y Tunnel Hoodie">
+                <h3>Model Y Tunnel Hoodie</h3>
+                <p>$69.00</p>
+                <p>️ 3,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Juniper+Ripple+Tee" alt="Juniper Ripple Tee">
+                <h3>Juniper Ripple Tee</h3>
+                <p>$15.83</p>
+                <p>️ 791.50 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Choose+Your+Ride+Tee" alt="Choose Your Ride Tee">
+                <h3>Choose Your Ride Tee</h3>
+                <p>$49.00</p>
+                <p>️ 2,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Model+Y+Hoodie" alt="Model Y Hoodie">
+                <h3>Model Y Hoodie</h3>
+                <p>$69.00</p>
+                <p>️ 3,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Juniper+Motion+Blur+Tee" alt="Juniper Motion Blur Tee">
+                <h3>Juniper Motion Blur Tee</h3>
+                <p>$49.00</p>
+                <p>️ 2,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Model+Y+Pages+Hoodie" alt="Model Y Pages Hoodie">
+                <h3>Model Y Pages Hoodie</h3>
+                <p>$69.00</p>
+                <p>️ 3,450 50x</p>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/200?text=Model+Y+Chrome+Hoodie" alt="Model Y Chrome Hoodie">
+                <h3>Model Y Chrome Hoodie</h3>
+                <p>$69.00</p>
+                <p>️ 3,450 50x</p>
+            </div>
+        </div>
+    </section>
 
-    <script>
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.2
-        };
+    <section id="enter" class="how-to-enter">
+        <h2>HOW TO ENTER</h2>
+        <div class="entry-steps">
+            <img src="https://via.placeholder.com/100?text=Tickets+1" alt="Tickets 1">
+            <p>Buy some merch or choose an entry pack! All entries are automatically tracked by our system.</p>
+            <img src="https://via.placeholder.com/100?text=Tickets+2" alt="Tickets 2">
+            <p>We will conduct a random drawing from all eligible entries received during the promotional period. Winner will be announced after the sweepstakes ends on September 28, 2025.</p>
+            <img src="https://via.placeholder.com/100?text=Tickets+3" alt="Tickets 3">
+        </div>
+        <div class="prizes">
+            <h3>Choose Between These Prizes</h3>
+            <ul>
+                <li>Model Y Juniper Launch Edition + $25K CASH</li>
+                <li>Model S Plaid + $20K CASH</li>
+                <li>Cybertruck + $40K CASH</li>
+                <li>Model 3 Performance + $50K CASH</li>
+                <li>Model X + $20K CASH</li>
+                <li>Rivian R1S + $50K CASH</li>
+                <li>Lucid Air + $50K CASH</li>
+                <li>OR $75K CASH</li>
+            </ul>
+        </div>
+    </section>
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.story-content-overlay, .step-item').forEach(el => {
-            observer.observe(el);
-        });
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelector('.hero-content').classList.add('is-visible');
-        });
-    </script>
+    <section class="reviews">
+        <h2>JuniperSociety Reviews</h2>
+        <p>Based on 139 reviews</p>
+        <div class="review-stats">
+            <p>93% (129)</p>
+            <p>7% (10)</p>
+            <p>0% (0)</p>
+            <p>0% (0)</p>
+            <p>0% (0)</p>
+        </div>
+        <div class="review-list">
+            <div class="review">
+                <p>I am utterly delighted, nay, THRILLED to share my extraordinary experience with Juniper Society. The product I received is nothing short of EXEMPLARY - a true MASTERPIECE that has exceeded my EXPECTATIONS in every conceivable way! The quality is SUPERB, the design is FLAWLESS, and the overall package is truly SPECTACULAR.</p>
+            </div>
+            <div class="review">
+                <p>I love the quick and easy entries and the discounts applied hopefully this car will come home to me!</p>
+                <p><strong>Hannah</strong></p>
+            </div>
+            <div class="review">
+                <p>Love it and the trusted crew :)</p>
+                <p><strong>Hannah</strong></p>
+            </div>
+            <div class="review">
+                <p>I ordered the hoodie and the quality is so nice :)</p>
+                <p><strong>Hannah</strong></p>
+            </div>
+            <div class="review">
+                <p>great car and website!</p>
+            </div>
+            <!-- Add more reviews as needed from the original -->
+        </div>
+    </section>
 </body>
 </html>
