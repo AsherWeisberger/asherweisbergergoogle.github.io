@@ -9,10 +9,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        /* --- Root and Base Styles --- */
+        /* Base Styling */
         :root {
-            --color-dark-bg: #0c0c0c;
-            --color-light-text: #f0f0f0;
+            --color-dark-bg: #0d0d0d;
+            --color-light-text: #f5f5f5;
             --color-primary-cta: #e82127;
             --color-subtle-text: #a1a1a1;
             --font-heading: 'Playfair Display', serif;
@@ -45,7 +45,7 @@
             transition: color 0.3s ease;
         }
 
-        h1, h2 {
+        h1, h2, h3 {
             font-family: var(--font-heading);
             font-weight: 400;
         }
@@ -67,7 +67,7 @@
             font-weight: 500;
             font-size: 1rem;
             letter-spacing: 1px;
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 8px 25px rgba(232, 33, 39, 0.4);
         }
 
@@ -76,7 +76,7 @@
             box-shadow: 0 12px 30px rgba(232, 33, 39, 0.6);
         }
 
-        /* --- Hero Section with Video Background --- */
+        /* --- Hero Section --- */
         .hero-section {
             height: 100vh;
             position: relative;
@@ -136,100 +136,71 @@
             margin-bottom: 50px;
         }
 
-        /* --- Storytelling Section --- */
+        /* --- Storytelling Sections (Full-screen) --- */
         .story-section {
             position: relative;
             display: flex;
             align-items: center;
-            min-height: 100vh;
-            padding: 0;
+            justify-content: center;
+            height: 100vh; /* Changed to full viewport height for a more cinematic feel */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect for the background image */
+            text-align: center;
         }
 
-        .story-content {
-            flex: 1;
-            padding: 80px 40px;
-            text-align: left;
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .story-content-overlay {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 20px;
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 1s ease-out, transform 1s ease-out;
         }
-
-        .story-content.is-visible {
+        
+        .story-content-overlay.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .story-content h2 {
+        .story-content-overlay h2 {
             font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 20px;
         }
         
-        .story-content p {
+        .story-content-overlay p {
             font-size: clamp(1rem, 2vw, 1.25rem);
             color: var(--color-subtle-text);
             max-width: 600px;
-            margin-bottom: 30px;
+            margin: 0 auto 30px;
         }
 
-        .story-image {
-            flex: 1;
-            min-height: 80vh;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        
-        .story-image.is-visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .story-section:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        /* --- Gallery Section --- */
-        .gallery-section {
-            padding-bottom: 0;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 50px;
-        }
-        
-        .gallery-item {
-            overflow: hidden;
-            position: relative;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s ease-out, transform 1s ease-out;
-        }
-        
-        .gallery-item.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
         /* --- How It Works Section --- */
         .steps-section {
             background-color: #1a1a1a;
+        }
+
+        .steps-section h2 {
+            margin-bottom: 20px;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+        }
+        .steps-section p {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--color-subtle-text);
+            max-width: 800px;
+            margin: 0 auto 60px;
         }
 
         .steps-container {
@@ -237,7 +208,6 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 50px;
-            margin-top: 60px;
         }
 
         .step-item {
@@ -295,10 +265,7 @@
 
         @media (max-width: 768px) {
             .story-section {
-                flex-direction: column !important;
-            }
-            .story-image {
-                min-height: 50vh;
+                height: 75vh;
             }
         }
     </style>
@@ -318,46 +285,43 @@
         </div>
     </header>
 
-    <section class="story-section" id="performance">
-        <div class="story-content">
+    <section class="story-section" style="background-image: url('https://images.unsplash.com/photo-1629704771465-950c44152e93?q=80&w=2670&auto=format&fit=crop');">
+        <div class="story-content-overlay">
             <h2>Unprecedented Performance</h2>
             <p>Experience the thrill of instantaneous torque, achieving 0 to 60 mph in a mere 4.6 seconds. The road ahead has never been this exhilarating.</p>
             <a href="#enter-draw" class="cta-button">Learn More</a>
         </div>
-        <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1629704771465-950c44152e93?q=80&w=2670&auto=format&fit=crop');"></div>
     </section>
 
-    <section class="story-section" id="interior">
-        <div class="story-content">
+    <section class="story-section" style="background-image: url('https://images.unsplash.com/photo-1621251347640-f10f274a72d7?q=80&w=2670&auto=format&fit=crop');">
+        <div class="story-content-overlay">
             <h2>A Sanctuary of Simplicity</h2>
             <p>Step into a meticulously crafted interior that prioritizes clean lines and intuitive design. Every detail is considered for a driving experience unlike any other.</p>
             <a href="#enter-draw" class="cta-button">Explore Interior</a>
         </div>
-        <div class="story-image" style="background-image: url('https://images.unsplash.com/photo-1621251347640-f10f274a72d7?q=80&w=2670&auto=format&fit=crop');"></div>
     </section>
 
-    <section class="section gallery-section">
-        <h2>Capture the Essence</h2>
-        <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1623916298270-f4b6a5051b66?q=80&w=2670&auto=format&fit=crop" alt="Tesla Model Y in a city"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1616872589993-4e350c37f374?q=80&w=2670&auto=format&fit=crop" alt="Tesla Model Y charging"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1629704771465-950c44152e93?q=80&w=2670&auto=format&fit=crop" alt="Tesla Model Y on the road"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1619896409564-96c21e350b2a?q=80&w=2670&auto=format&fit=crop" alt="Tesla Model Y cinematic shot"></div>
+    <section class="story-section" style="background-image: url('https://images.unsplash.com/photo-1623916298270-f4b6a5051b66?q=80&w=2670&auto=format&fit=crop');">
+        <div class="story-content-overlay">
+            <h2>Seamless Technology</h2>
+            <p>Your vehicle comes fully equipped with the most advanced driver assistance system, offering a new level of convenience and confidence on the road.</p>
+            <a href="#enter-draw" class="cta-button">See Features</a>
         </div>
     </section>
 
     <section class="section steps-section">
         <h2>How It Works</h2>
+        <p>Your path to winning is clear and transparent. Follow these three simple steps for your chance to win the grand prize.</p>
         <div class="steps-container">
             <div class="step-item">
                 <span class="step-number">01</span>
                 <h3>Secure Your Entries</h3>
-                <p>Purchase entries through our secure portal to get your chance to win.</p>
+                <p>Each entry gives you a chance to win. Purchase entries through our secure portal.</p>
             </div>
             <div class="step-item">
                 <span class="step-number">02</span>
                 <h3>The Live Draw</h3>
-                <p>The winner is selected and announced live for complete transparency.</p>
+                <p>The winner is selected at random and announced live for complete transparency.</p>
             </div>
             <div class="step-item">
                 <span class="step-number">03</span>
@@ -382,7 +346,7 @@
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.2 // Trigger when 20% of the element is visible
+            threshold: 0.2
         };
 
         const observer = new IntersectionObserver((entries, observer) => {
@@ -394,15 +358,13 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.story-content, .story-image, .gallery-item, .step-item').forEach(el => {
+        document.querySelectorAll('.story-content-overlay, .step-item').forEach(el => {
             observer.observe(el);
         });
         
-        // Special case for the hero content to animate on load
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.hero-content').classList.add('is-visible');
         });
     </script>
-
 </body>
 </html>
